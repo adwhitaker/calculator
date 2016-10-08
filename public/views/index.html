@@ -8,7 +8,8 @@
   </head>
   <body>
     <h1>calculator</h1>
-    <form>
+
+    <!-- <form>
 
       <label for='x'>First Number: </label>
       <input type='number' name='x' id='x'>
@@ -20,8 +21,36 @@
       <input type='number' name='y' id='y'/>
 
       <input type='submit'/>
-    </form>
+    </form> -->
+
+    <!-- <p>total: <span id='total'>0</span></p> -->
+
+    <div class='calculator'>
+      <button class='number' data-value='1'>1</button>
+      <button class='number' data-value='2'>2</button>
+      <button class='number' data-value='3'>3</button>
+      <button class='number' data-value='4'>4</button>
+      <button class='number' data-value='5'>5</button>
+      <button class='number' data-value='6'>6</button>
+      <button class='number' data-value='7'>7</button>
+      <button class='number' data-value='8'>8</button>
+      <button class='number' data-value='9'>9</button>
+      <button class='number' data-value='0'>0</button>
+
+      <!-- <button class='mathOpp' data-value='.'>.</button> -->
+      <button class='mathOpp' data-value='add'>+</button>
+      <button class='mathOpp' data-value='sub'>-</button>
+      <button class='mathOpp' data-value='mult'>*</button>
+      <button class='mathOpp' data-value='div'>/</button>
+
+      <button id='equals' data-value='submit'>=</button>
+      <!-- <button id='delete' data-value='delete'>del</button> -->
+
+
+      <p>total: <span id='calcTotal'></span><span id='total'></span></p>
+    </div>
     <button id='clear'>Clear</button>
-    <p>total: <span id='total'>0</span></p>
+    </div>
+
   </body>
 </html>

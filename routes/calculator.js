@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var total = 0
+var total = null;
 
 function setTotal (amount) {
   total = amount;
