@@ -41,4 +41,12 @@ function getComputation () {
 // clears info in the form
 function clearInfo () {
   $('form').find('input[type=text], input[type=number]').val('');
+  var resetTotal = {'total': 0};
+
+  $.ajax({
+    type: 'POST',
+    url: '/math/reset',
+    data: resetTotal,
+    success: getComputation
+  })
 };

@@ -22,18 +22,20 @@ function doMath (obj) {
       setTotal(Number(obj.x) / Number(obj.y));
       break;
   }
-}
+};
 
 router.post('/', function(req, res) {
-  console.log('Posted a request', req.body);
   doMath(req.body);
   res.sendStatus(200);
 });
 
 router.get('/', function(req, res) {
-  console.log('sent request from server:', total);
   res.send(total.toString());
 });
 
+router.post('/reset', function(req, res) {
+  setTotal(Number(req.body.total));
+  res.sendStatus(200);
+});
 
 module.exports = router;
