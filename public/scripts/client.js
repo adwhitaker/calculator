@@ -1,13 +1,16 @@
 $(function() {
   $('form').on('submit', submitInfo);
   $('#clear').on('click', clearInfo);
-  $('#equals').on('click', calcSubmit);
+  $('#equals').on('click', sendInfo);
   $('.calculator').on('click', 'button', getValue);
-
+  $('.opperators').on('click', 'button', getOpp);
 });
 
-var Type = '';
-var MathForm = {};
+var MathForm = {
+  x: '',
+  type: '',
+  y: ''
+};
 
 // this function takes the information from the form and creates an object
 function createObject (data) {
@@ -25,7 +28,7 @@ function submitInfo () {
 
   $.ajax({
     type: 'POST',
-    url: '/math',
+    url: '/math/' + MathForm.type,
     data: MathForm,
     success: getComputation
   });
@@ -36,9 +39,11 @@ function getComputation () {
 
   $.ajax({
     type: 'GET',
-    url: '/math',
+    url: '/math/',
     success: function (amount) {
-      $('#total').text(amount);
+      clearInfo();
+      MathForm.x = amount;
+      $('#x').val(MathForm.x);
     }
   });
 };
@@ -46,8 +51,9 @@ function getComputation () {
 // clears info in the form
 function clearInfo () {
   $('form').find('input[type=text], input[type=number]').val('');
-  $('#calcTotal').empty();
-  $('#total').empty();
+  $('#secondNumber').addClass('hidden');
+  $('#firstNumber').removeClass('hidden');
+  MathForm.type = '';
   var resetTotal = {'total': 0};
 
   $.ajax({
@@ -55,43 +61,32 @@ function clearInfo () {
     url: '/math/reset',
     data: resetTotal,
     success: function () {
-      $('#calcTotal').empty();
-      $('#total').empty();
+      MathForm.x = '';
+      MathForm.y = '';
     }
   })
-
 };
 
-
 function getValue () {
-  var $pageTotal = $('#calcTotal').text();
-  var $buttonValue = $(this).text()
-
-  if (Number($buttonValue) < 10) {
-    $pageTotal = $pageTotal + $buttonValue;
-    $('#calcTotal').text($pageTotal);
-  } else if ($buttonValue === '.') {
-    $pageTotal = $pageTotal + $buttonValue;
-    $('#calcTotal').text($pageTotal);
-  }  else {
-    type = $(this).data('value');
-    console.log(type);
-    $pageTotal = $pageTotal + ' ' + $buttonValue + ' ';
-    $('#calcTotal').text($pageTotal);
+  var buttonValue = $(this).data('value');
+  if (MathForm.type === '') {
+    MathForm.x = MathForm.x + buttonValue.toString();
+    $('#x').val(MathForm.x);
+  } else {
+    MathForm.y = MathForm.y + buttonValue.toString();
+    $('#y').val(MathForm.y);
   }
 }
 
-function calcSubmit () {
-  console.log('inside submit');
-  var amount = $('#calcTotal').text().split(' ');
-  console.log(amount);
-  createNewObject(amount);
-  submitInfo();
+function getOpp () {
+  oppSymbol = $(this).text()
+  MathForm.type = $(this).data('name');
+  $('input[id=type]').val(MathForm.type);
+  $('#secondNumber').removeClass('hidden');
+  $('#firstNumber').addClass('hidden');
 }
 
-function createNewObject (arr) {
-  MathForm.x = arr[0];
-  MathForm.type = type;
-  MathForm.y = arr[2];
-  console.log(MathForm);
+function sendInfo (event) {
+  event.preventDefault;
+  $('#submitForm').submit();
 }
