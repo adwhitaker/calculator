@@ -1,17 +1,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-var calculatorRouter = require('./routes/calculator');
 
 // routers
-// // //
+var calculatorRouter = require('./routes/calculator');
 
 var app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
-
 
 // using the routers
 app.use('/math', calculatorRouter);

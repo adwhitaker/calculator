@@ -6,6 +6,7 @@ $(function() {
   $('.opperators').on('click', 'button', getOpp);
 });
 
+// object containing the information that will eventually be sent to the server
 var MathForm = {
   x: '',
   type: '',
@@ -68,6 +69,7 @@ function clearInfo () {
   })
 };
 
+// access the value of the button clicked and adds it to the DOM
 function getValue () {
   var buttonValue = $(this).data('value');
 
@@ -89,6 +91,7 @@ function getValue () {
   }
 }
 
+// access the value of the mathematical opperator clicked
 function getOpp () {
   oppSymbol = $(this).text()
   MathForm.type = $(this).data('name');
@@ -97,6 +100,7 @@ function getOpp () {
   $('#firstNumber').addClass('hidden');
 }
 
+// submits the form info when the = sign is clicked 
 function sendInfo (event) {
   event.preventDefault;
   $('#submitForm').submit();
