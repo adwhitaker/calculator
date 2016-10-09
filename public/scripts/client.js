@@ -9,7 +9,8 @@ $(function() {
 var MathForm = {
   x: '',
   type: '',
-  y: ''
+  y: '',
+  total: null
 };
 
 // this function takes the information from the form and creates an object
@@ -36,14 +37,14 @@ function submitInfo () {
 
 // returns computed math from server
 function getComputation () {
-
   $.ajax({
     type: 'GET',
     url: '/math/',
     success: function (amount) {
       clearInfo();
-      MathForm.x = amount;
-      $('#x').val(MathForm.x);
+      MathForm.total = amount;
+      $('#x').val(MathForm.total);
+      MathForm.x = '';
     }
   });
 };
@@ -54,7 +55,7 @@ function clearInfo () {
   $('#secondNumber').addClass('hidden');
   $('#firstNumber').removeClass('hidden');
   MathForm.type = '';
-  var resetTotal = {'total': 0};
+  var resetTotal = {'total': null};
 
   $.ajax({
     type: 'POST',
@@ -69,10 +70,20 @@ function clearInfo () {
 
 function getValue () {
   var buttonValue = $(this).data('value');
+
   if (MathForm.type === '') {
-    MathForm.x = MathForm.x + buttonValue.toString();
-    $('#x').val(MathForm.x);
+    if (MathForm.x === '') {
+      MathForm.x = MathForm.x + buttonValue.toString();
+      $('#x').val(MathForm.x);
+    } else {
+      var xVal = $('input[id=x]').val();
+      MathForm.x = xVal;
+      MathForm.x = MathForm.x + buttonValue.toString();
+      $('#x').val(MathForm.x);
+    }
   } else {
+    var yVal = $('input[id=y]').val();
+    MathForm.y = yVal;
     MathForm.y = MathForm.y + buttonValue.toString();
     $('#y').val(MathForm.y);
   }

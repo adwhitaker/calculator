@@ -4,7 +4,7 @@
     <title>Calculator</title>
     <script type='text/javascript' src='assets/vendors/jquery-3.1.1.min.js'></script>
     <script src='scripts/client.js'></script>
-    <!-- <link rel="stylesheet" href="assets/vendors/bootstrap-3.3.7-dist/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link rel='stylesheet' href='styles/styles.css' />
   </head>
@@ -13,76 +13,123 @@
   <div class='row'>
     <h1>calculator</h1>
   </div>
-  <div class='row'>
-    <form>
-      <div id='firstNumber'>
-        <label for='x'></label>
-        <input type='text' name='x' id='x'>
+    <div class='jumbotron'>
+    <div class='row'>
+      <div class="col-md-2 col-lg-2"></div>
+        <div class="col-md-8 col-lg-8">
+          <form>
+            <div id='firstNumber'>
+              <label for='x'></label>
+              <input type='text' name='x' id='x'>
+            </div>
+
+            <div id='mathmaticalOperator' class='hidden'>
+              <label for='type'>Mathmatical Operator: </label>
+              <input type='text' name='type' id='type' />
+            </div>
+
+            <div id='secondNumber' class='hidden'>
+              <label for='y'></label>
+              <input type='text' name='y' id='y'/>
+            </div>
+
+            <input id='submitForm' class='hidden' type='submit'/>
+          </form>
       </div>
+      <div class="col-md-2 col-lg-2"></div>
+    </div>
 
-      <div id='mathmaticalOperator' class='hidden'>
-        <label for='type'>Mathmatical Operator: </label>
-        <input type='text' name='type' id='type' />
+    <div class='row'>
+      <div class="col-md-2 col-lg-2"></div>
+      <div class='calculator'>
+        <div class="col-md-2 col-lg-2">
+          <button class='number btn btn-primary btn-lg btn-block' data-value='7'>7</button>
+        </div>
+        <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='8'>8</button>
       </div>
-
-      <div id='secondNumber' class='hidden'>
-        <label for='y'></label>
-        <input type='text' name='y' id='y'/>
+      <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='9'>9</button>
       </div>
+      </div>
+      <div class='opperators'>
+        <div class="col-md-2 col-lg-2">
+        <button class='mathOpp btn btn-warning btn-lg btn-block' data-name='div'>/</button>
+      </div>
+      </div>
+      <div class="col-md-2 col-lg-2"></div>
+    </div>
 
-      <input id='submitForm' class='hidden' type='submit'/>
-    </form>
-  </div>
-  <div class='row'>
-    <button id='clear'>C</button>
-    <div class='box'></div>
-    <div class='box'></div>
-    <div class='box'></div>
-  </div>
+    <div class='row'>
+      <div class="col-md-2 col-lg-2"></div>
+      <div class='calculator'>
+        <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='4'>4</button>
+      </div>
+      <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='5'>5</button>
+      </div>
+      <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='6'>6</button>
+      </div>
+      </div>
+      <div class='opperators'>
+      <div class="col-md-2 col-lg-2">
+        <button class='mathOpp btn btn-warning btn-lg btn-block' data-name='mult'>*</button>
+      </div>
+      </div>
+      <div class="col-md-2 col-lg-2"></div>
+    </div>
 
+    <div class='row'>
+      <div class="col-md-2 col-lg-2"></div>
+      <div class='calculator'>
+        <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='1'>1</button>
+      </div>
+      <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='2'>2</button>
+      </div>
+      <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='3'>3</button>
+      </div>
+      </div>
+      <div class='opperators'>
+        <div class="col-md-2 col-lg-2">
+        <button class='mathOpp btn btn-warning btn-lg btn-block' data-name='sub'>-</button>
+      </div>
+      </div>
+      <div class="col-md-2 col-lg-2"></div>
+    </div>
 
-  <div class='row'>
-    <div class='calculator'>
-      <button class='number' data-value='7'>7</button>
-      <button class='number' data-value='8'>8</button>
-      <button class='number' data-value='9'>9</button>
+    <div class='row'>
+      <div class="col-md-2 col-lg-2"></div>
+      <div class='calculator'>
+        <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='0'>0</button>
+      </div>
+        <div class="col-md-2 col-lg-2">
+        <button class='number btn btn-primary btn-lg btn-block' data-value='.'>.</button>
+      </div>
+      </div>
+      <div class='opperators lastOpperator'>
+        <div class="col-md-2 col-lg-2">
+        <button class='mathOpp btn btn-warning btn-lg btn-block' data-name='add'>+</button>
+      </div>
     </div>
-    <div class='opperators'>
-      <button class='mathOpp' data-name='div'>/</button>
+      <div class="col-md-2 col-lg-2">
+      <button id='equals' class='btn btn-success btn-lg btn-block' type='submit' value='submit'>=</button>
     </div>
-  </div>
+    <div class="col-md-2 col-lg-2"></div>
+    </div>
 
-  <div class='row'>
-    <div class='calculator'>
-      <button class='number' data-value='4'>4</button>
-      <button class='number' data-value='5'>5</button>
-      <button class='number' data-value='6'>6</button>
+    <div class='row'>
+      <div class="col-md-2 col-lg-2"></div>
+      <div class="col-md-8 col-lg-8">
+        <button class='btn btn-danger btn-lg btn-block' id='clear'>C</button>
+      </div>
+      <div class="col-md-2 col-lg-2"></div>
     </div>
-    <div class='opperators'>
-      <button class='mathOpp' data-name='mult'>*</button>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='calculator'>
-      <button class='number' data-value='1'>1</button>
-      <button class='number' data-value='2'>2</button>
-      <button class='number' data-value='3'>3</button>
-    </div>
-    <div class='opperators'>
-      <button class='mathOpp' data-name='sub'>-</button>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='calculator'>
-      <button class='number' data-value='0'>0</button>
-      <button class='number' data-value='.'>.</button>
-    </div>
-    <div class='opperators lastOpperator'>
-      <button class='mathOpp' data-name='add'>+</button>
-    </div>
-    <button id='equals' type='submit'>=</button>
   </div>
 
 </div> <!-- end of container div -->
