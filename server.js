@@ -8,14 +8,14 @@ var calculatorRouter = require('./routes/calculator');
 var app = express();
 
 // Middleware
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // using the routers
 app.use('/math', calculatorRouter);
 
 // set public/index.html as client
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
   var filename = path.join(__dirname, 'public/views/index.html');
   res.sendFile(filename);
 });

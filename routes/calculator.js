@@ -11,7 +11,6 @@ mathOpperations = {
   },
   sub: function (obj) {
     return Number(obj.x) - Number(obj.y);
-
   },
   mult: function (obj) {
     return Number(obj.x) * Number(obj.y);
@@ -19,21 +18,21 @@ mathOpperations = {
   },
   div: function (obj) {
     return Number(obj.x) / Number(obj.y);
-  },
+},
   reset: function (obj) {
     return Number(obj.total);
   }
 };
 
 // post request to run mathOpperations
-router.post('/:name', function(req, res) {
+router.post('/:name', function (req, res) {
   var toCompute = mathOpperations[req.params.name];
   total = toCompute(req.body);
   res.sendStatus(200);
 });
 
 // get total
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   res.send(total.toString());
 });
 
