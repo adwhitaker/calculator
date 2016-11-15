@@ -9,7 +9,11 @@ This is a basic calculator. It adds, subtracts, multiplies, and divides two numb
 - styled with Bootstrap
 
 ## Running the Server
-- requires Node, NPM, and Express
+- clone repository
+- in the terminal run npm install
+- then npm start
+- go to localhost:3000 in a browser
+- to stop the server, in the terminal press control + C 
 
 ## Authors
 - Alexander Whitaker
